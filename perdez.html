@@ -1,0 +1,49 @@
+<html>
+<head>
+<script type="text/javascript">
+	var c;// Canvas context
+	var H,W;
+		function main(){
+			var d=document.getElementById("canvas");
+			H=d.height;
+			W=d.width;
+			c=d.getContext("2d");// defining canvas parameters
+		 	//c.clearRect(0,0,W,H);
+rectum(c);
+}//end main
+
+function rectum(c){
+c.lineWidth=1;
+
+var xA=200,yA=50,xB=800,yB=50,xC=800,yC=600,xD=200,yD=600,  p=0.95,q=1-p,i, 
+    xxA,yyA, xxB,yyB, xxC,yyC, xxD,yyD;
+c.beginPath();
+for(i=0;i<50;i++){
+	c.moveTo(xA,yA);//Building
+	c.lineTo(xB,yB);
+	c.lineTo(xC,yC);
+	c.lineTo(xD,yD);
+	c.lineTo(xA,yA);
+c.strokeStyle='red';	
+c.lineWidth=0.1;
+	c.stroke(); //drawing
+	xxA=p*xA+q*xB;yyA=p*yA+q*yB;//Shifting
+	xxB=p*xB+q*xC;yyB=p*yB+q*yC;
+	xxC=p*xC+q*xD;yyC=p*yC+q*yD;
+	xxD=p*xD+q*xA;yyD=p*yD+q*yA;
+
+	xA=xxA; yA=yyA; //redefining
+	xB=xxB; yB=yyB;
+	xC=xxC; yC=yyC;
+	xD=xxD; yD=yyD;
+	
+}
+}
+</script>
+</head>
+<body onload="main()">
+<canvas id="canvas" width="800" height="650">
+	Ваш браузер не поддерживает канвас
+</canvas>	
+</body>
+</html>
